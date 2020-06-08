@@ -1,0 +1,31 @@
+﻿
+<style>
+    .header-image {
+        display: inline-block;
+        vertical-align: middle;
+        padding-left: 100px;
+    }
+    .header-text {
+        display: inline-block;
+        vertical-align: middle;
+    }
+</style>
+
+<div class="homeHeader">
+    <div class="header-text">
+        <h1 class="padding-bottom">Currency Converter</h1>
+    </div>
+    <div class="header-image">
+        <img src="~/Content/Images/currencyExchange.png" style="width:200px" />
+    </div>
+    <div>
+        <p>
+            This simple currency conversion application allows you to convert between GBP, USD, AUD and EUR. <br />
+            If you create an account and you are logged in when making your currency conversions, you may view all the conversions you have made in the @Html.ActionLink("Conversion Record for Audit", "Index", "Audit") page.
+        </p>
+    </div>
+</div>
+
+<div>
+    @{Html.RenderAction("CurrencyConversion", "Home");}
+</div>

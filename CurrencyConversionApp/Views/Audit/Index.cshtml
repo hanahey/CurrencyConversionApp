@@ -1,0 +1,124 @@
+﻿@using PagedList.Mvc;
+@model CurrencyConversionApp.Models.AuditViewModel
+
+@Styles.Render("~/Content/PagedList.css")
+
+<style>
+    .inline-pager {
+        display: inline-block;
+        vertical-align: middle;
+    }
+</style>
+
+<h1>
+    Currency Conversion Record for Audit
+</h1>
+<br />
+<h4 style="text-decoration:underline">
+    <b>
+        Filter By Date
+    </b>
+</h4>
+
+<form id="form" method="post">
+
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.StartDate, htmlAttributes: new { @class = "control-label col-md-2", @style = "text-align:left" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.StartDate, new { htmlAttributes = new { @type = "date", @class = "form-control datepicker" } })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.EndDate, htmlAttributes: new { @class = "control-label col-md-2", @style = "text-align:left" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.EndDate, new { htmlAttributes = new { @type = "date", @class = "form-control datepicker" } })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Filter" class="btn btn-primary" />
+            </div>
+        </div>
+
+    </div>
+
+</form>
+
+<div>
+    @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+</div>
+
+@{
+    int count;
+
+    if (Model.AuditRecords.PageNumber == 1)
+    {
+        count = 0;
+    }
+    else
+    {
+        count = (Model.AuditRecords.PageNumber - 1) * Model.AuditRecords.PageSize;
+    }
+}
+
+<table class="table table-striped tablesorter" id="auditTable">
+    <thead>
+        <tr>
+            <th>
+                No.
+            </th>
+            <th>
+                Amount To Convert
+            </th>
+            <th>
+                Currency
+            </th>
+            <th>
+                Exchange Rate
+            </th>
+            <th>
+                Date
+            </th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model.AuditRecords)
+        {
+            <tr>
+                <td>
+                    @{count = count + 1; }
+
+                    @count
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Amount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Currency)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ExchangeRate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+            </tr>
+
+        }
+    </tbody>
+    <tfoot>
+</table>
+
+<div class="inline-pager padding-right">
+    @Html.PagedListPager(Model.AuditRecords, page => Url.Action("Index", new { page }))
+</div>
+<div class="inline-pager">
+    Page @(Model.AuditRecords.PageCount < Model.AuditRecords.PageNumber ? 0 : Model.AuditRecords.PageNumber) of @Model.AuditRecords.PageCount
+</div>

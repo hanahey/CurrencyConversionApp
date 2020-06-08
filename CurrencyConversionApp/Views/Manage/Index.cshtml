@@ -1,0 +1,25 @@
+﻿@model CurrencyConversionApp.Models.IndexViewModel
+@{
+    ViewBag.Title = "Manage Your Account";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<p class="text-success">@ViewBag.StatusMessage</p>
+
+<div>
+    <hr />
+    <div class="form-group">
+
+        <label class="control-label col-md-2" style="text-align:left">
+            Password
+        </label>
+
+        <div class="col-md-10">
+            @if (Model.HasPassword)
+            {
+                @Html.ActionLink("Change your password", "ChangePassword")
+            }
+        </div>
+    </div>
+</div>

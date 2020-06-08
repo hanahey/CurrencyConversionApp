@@ -1,0 +1,69 @@
+﻿.homeHeader {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+    color: inherit;
+    background-color: #F0FCFF;
+}
+
+    .homeHeader h1,
+    .homeHeader .h1 {
+        color: inherit;
+    }
+
+    .homeHeader p {
+        margin-bottom: 10px;
+        font-size: 16px;
+        font-weight: 200;
+    }
+
+.container .homeHeader,
+.container-fluid .homeHeader {
+    padding-right: 15px;
+    padding-left: 15px;
+    border-radius: 6px;
+}
+
+.homeHeader .container {
+    max-width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+    .homeHeader {
+        padding-top: 48px;
+        padding-bottom: 48px;
+    }
+
+    .container .homeHeader,
+    .container-fluid .homeHeader {
+        padding-right: 60px;
+        padding-left: 60px;
+    }
+
+    .homeHeader h1,
+    .homeHeader .h1 {
+        font-size: 63px;
+    }
+}
+
+.padding-bottom {
+    padding-bottom: 25px;
+}
+
+.padding-top {
+    padding-top: 25px;
+}
+
+.padding-left {
+    padding-left: 100px;
+}
+
+.padding-right {
+    padding-right: 50px;
+}
+
+.btn-larger {
+    height: 50px;
+    width: 280px;
+    font-size: large;
+}

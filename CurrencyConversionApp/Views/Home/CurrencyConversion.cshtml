@@ -1,0 +1,51 @@
+﻿@model CurrencyConversionApp.Models.CurrencyConversionViewModel
+
+<form id="form" method="post">
+
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal padding-top">
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CurrencyFrom, htmlAttributes: new { @class = "control-label col-md-2", @style = "text-align:left" })
+            <div class="col-md-10">
+                <div class="col-md-2">
+                    @Html.DropDownListFor(m => m.CurrencyFrom, new SelectList(Model.Currencies), new { @class = "form-control col-md-4", @style = "max-width:130px" })
+                </div>
+                <div class="col-md-6">
+                    @Html.EditorFor(model => model.AmountToConvert, new { htmlAttributes = new { @class = "form-control", @Value = "" } })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CurrencyTo, htmlAttributes: new { @class = "control-label col-md-2", @style = "text-align:left" })
+            <div class="col-md-10">
+                <div class="col-md-2">
+                    @Html.DropDownListFor(m => m.CurrencyTo, new SelectList(Model.Currencies), new { @class = "form-control col-md-4", @style = "max-width:130px" })
+                </div>
+                <div class="col-md-6">
+                    <text class="form-control" style="max-width:280px;background-color:#EEEEEE">
+                        @if (@Model.ConvertedAmount != 0)
+                        {
+                            @Model.ConvertedAmount
+                        }
+                        else
+                        {
+                            //display nothing if the there is no value, or the value is invalid and overrides the default value of 0
+                        }
+                    </text>
+                </div>
+            </div>
+        </div>
+
+            <div class="col-md-offset-2 col-md-4 padding-left padding-top">
+                <input type="submit" value="Convert" class="btn btn-success btn-larger" />
+            </div>
+    </div>
+
+</form>
+
+<div>
+    @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+</div>
