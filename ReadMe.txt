@@ -2,7 +2,7 @@
 Currency Conversion App
 -----------------------
 
-This application is as simple currency conversion application that allows you to convert between currencies.
+This application is a simple currency conversion application that allows you to convert between currencies.
 Currently, the currencies available for conversion are GBP, USD, EUR and AUD.
 
 This Application contains 2 main features:
